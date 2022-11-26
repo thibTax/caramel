@@ -7,6 +7,7 @@ module.exports = {
       'PrimaryHover': '#141414',
       'PrimaryActive':'white', /* 272727 */
       'Light' : '#EFF0F9',
+      'Danger':"#dc2626"
      
     },
     fontFamily: {
