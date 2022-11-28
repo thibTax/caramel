@@ -6,20 +6,34 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import ForgotPassword from "./pages/forgot-password";
 import NavBar from "./components/nav-bar";
+import CarList from "./pages/car-list";
+import CarDetails from "./pages/car-details";
 import "./App.css";
-import CarCard from "./components/car-card";
 
 function App() {
   return (
     <div>
       <NavBar />
-      <CarCard />
 
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/carlist" element={<CarList />} />
+          <Route
+            path="/cardetails"
+            element={
+              <CarDetails
+                img={""}
+                marque={""}
+                modele={""}
+                annee={0}
+                km={0}
+                assureur={""}
+              />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

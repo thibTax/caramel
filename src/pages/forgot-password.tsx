@@ -1,4 +1,3 @@
-import { url } from "inspector";
 import react, { FunctionComponent } from "react";
 
 const ForgotPassword: FunctionComponent = () => {
