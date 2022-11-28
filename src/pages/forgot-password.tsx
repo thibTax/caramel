@@ -15,7 +15,12 @@ const ForgotPassword: FunctionComponent = () => {
       <div className="px-6 h-full text-gray-800">
         <div className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
           <div className="w-full h-auto hidden lg:block lg:w-1/2 bg-cover rounded-l-lg">
-            <img src="login.jpg" alt="forgot password" />
+            <img
+              src="/Forgot password-pana.png"
+              height={"80%"}
+              width={"80%"}
+              alt="Online illustrations by Storyset"
+            />
           </div>
           {/* <!-- Col --> */}
           <div className="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
@@ -57,7 +62,7 @@ const ForgotPassword: FunctionComponent = () => {
                   Already have an account?
                   <a
                     className="no-underline border-b border-blue text-Danger"
-                    href="../login/"
+                    href="../login"
                   >
                     Log in
                   </a>

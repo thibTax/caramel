@@ -5,11 +5,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import ForgotPassword from "./pages/forgot-password";
+import NavBar from "./components/nav-bar";
 import "./App.css";
+import CarCard from "./components/car-card";
 
 function App() {
   return (
     <div>
+      <NavBar />
+      <CarCard />
+
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />

@@ -63,7 +63,7 @@ const Register: FunctionComponent = () => {
           Already have an account?
           <a
             className="no-underline border-b border-blue text-Danger"
-            href="../login/"
+            href="../login"
           >
             Log in
           </a>
