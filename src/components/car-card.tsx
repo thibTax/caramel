@@ -1,45 +1,38 @@
 import react, { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CarDetails from "../pages/car-details";
-type props = {
-  assureur: string;
-  id: number;
-  img: string;
-  marque: string;
-  modele: string;
-  annee: number;
-  km: number;
+import Vehicules from "../model/vehicules";
+
+type Props = {
+  vehicule: Vehicules;
 };
-function CarCard(props: props) {
+
+const CarCard: FunctionComponent<Props> = ({ vehicule }) => {
+  const history = useNavigate();
+
+  const goToVehicule = (id: number) => {
+    history("/carlist/" + id);
+  };
   return (
     <div className="relative max-w-xs shadow-md m-8 rounded-lg border border-gray-200">
       <div className="   rounded-lg overflow-hidden ">
         <div className=" bg-black ">
           <img
-            src={props.img}
+            src={vehicule.img}
             className="max-h-full h-48 max-w-full w-72 object-fill"
             alt="Logo"
           />
         </div>
         <button
           className="rounded-lg bg-Primary w-full -mt-8 ml-4 absolute capitalize focus:ring-2 focus:outline-none focus:ring-gray-600"
-          onClick={() => (
-            <CarDetails
-              img={props.img}
-              marque={props.marque}
-              modele={props.modele}
-              annee={props.annee}
-              km={props.km}
-              assureur={props.assureur}
-            />
-          )}
+          onClick={() => goToVehicule(vehicule.id)}
         >
           <div className="truncate text-xl font-semibold text-white tracking-wide">
-            <span>{props.modele}</span> &bull;
-            <span> {props.annee}</span>
+            <span>{vehicule.modele}</span> &bull;
+            <span> {vehicule.annee}</span>
           </div>
           <h1 className="flex items-center justify-between ml-4 mr-4 mb-2 text-sm font-semibold italic text-gray-500">
-            {props.km} km
+            {vehicule.km} km
             <span className="text-inline">
               <svg
                 aria-hidden="true"
@@ -60,5 +53,5 @@ function CarCard(props: props) {
       </div>
     </div>
   );
-}
+};
 export default CarCard;

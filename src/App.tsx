@@ -21,19 +21,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/carlist" element={<CarList />} />
-          <Route
-            path="/cardetails"
-            element={
-              <CarDetails
-                img={""}
-                marque={""}
-                modele={""}
-                annee={0}
-                km={0}
-                assureur={""}
-              />
-            }
-          />
+          <Route path="/carlist/:id" element={<CarDetails id={""} />} />
         </Routes>
       </BrowserRouter>
     </div>

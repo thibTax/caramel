@@ -1,25 +1,22 @@
-import react, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState, useEffect } from "react";
 import CarCard from "../components/car-card";
-import VEHICULES from "../model/vehicule.json";
+import Vehicules from "../model/vehicules";
+import { VEHICULES } from "../model/mock-vehicule";
 
 const CarList: FunctionComponent = () => {
+  const [vehicules, setVehicules] = useState<Vehicules[]>([]);
+
+  useEffect(() => {
+    setVehicules(VEHICULES);
+  });
   return (
     <div>
       <h1 className="text-3xl font-bold ml-2 mt-2 tracking-wide ">Voiture</h1>
       <div className="flex flex-wrap items-center justify-center md:justify-start">
-        {VEHICULES.map((props) => (
+        {vehicules.map((vehicule) => (
           <>
-            {props.vehicule === "voiture" ? (
-              <CarCard
-                key={props.id}
-                id={props.id}
-                img={props.img}
-                marque={props.marque}
-                modele={props.modele}
-                annee={props.annee}
-                km={props.km}
-                assureur={props.assureur}
-              />
+            {vehicule.vehicule === "voiture" ? (
+              <CarCard key={vehicule.id} vehicule={vehicule} />
             ) : (
               console.log(1)
             )}
@@ -47,21 +44,12 @@ const CarList: FunctionComponent = () => {
       </div>
       <h1 className="text-3xl font-bold ml-2 mt-2 tracking-wide ">Moto</h1>
       <div className="flex flex-wrap justify-center md:justify-start">
-        {VEHICULES.map((props) => (
+        {vehicules.map((vehicule) => (
           <>
-            {props.vehicule === "moto" ? (
-              <CarCard
-                key={props.id}
-                id={props.id}
-                img={props.img}
-                marque={props.marque}
-                modele={props.modele}
-                annee={props.annee}
-                km={props.km}
-                assureur={props.assureur}
-              />
+            {vehicule.vehicule === "moto" ? (
+              <CarCard key={vehicule.id} vehicule={vehicule} />
             ) : (
-              console.log(props.id)
+              console.log(1)
             )}
           </>
         ))}
