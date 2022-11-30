@@ -8,6 +8,7 @@ import ForgotPassword from "./pages/forgot-password";
 import NavBar from "./components/nav-bar";
 import CarList from "./pages/car-list";
 import CarDetails from "./pages/car-details";
+import PrivateRoutes from "./PrivateRoutes";
 import "./App.css";
 
 function App() {
@@ -17,11 +18,15 @@ function App() {
 
       <BrowserRouter>
         <Routes>
+          <Route element={<PrivateRoutes />}>
+            <Route path="/" element={<CarList />} />
+            <Route path="/carlist" element={<CarList />} />
+            <Route path="/carlist/:id" element={<CarDetails id={""} />} />
+          </Route>
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route path="/carlist" element={<CarList />} />
-          <Route path="/carlist/:id" element={<CarDetails id={""} />} />
         </Routes>
       </BrowserRouter>
     </div>

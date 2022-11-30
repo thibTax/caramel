@@ -1,6 +1,101 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
+import AuthenticationService from "../services/authentification-service";
+import { useNavigate } from "react-router-dom";
+import { setConstantValue } from "typescript";
+
+type Field = {
+  value?: any;
+  error?: string;
+  isValid?: boolean;
+};
+
+type Form = {
+  username: Field;
+  password: Field;
+};
 
 const Login: FunctionComponent = () => {
+  const history = useNavigate();
+
+  const [form, setForm] = useState<Form>({
+    username: { value: "" },
+    password: { value: "" },
+  });
+
+  const [message, setMessage] = useState<string>("Vous êtes déconnecté !");
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const fieldName: string = e.target.id;
+    const fieldValue: string = e.target.value;
+    const newField: Field = { [fieldName]: { value: fieldValue } };
+
+    setForm({ ...form, ...newField });
+  };
+  const validateForm = () => {
+    let newForm: Form = form;
+
+    // Validator username
+    if (form.username.value.length < 3) {
+      const errorMsg: string =
+        "Votre prénom doit faire au moins 3 caractères de long.";
+      const newField: Field = {
+        value: form.username.value,
+        error: errorMsg,
+        isValid: false,
+      };
+      newForm = { ...newForm, ...{ username: newField } };
+    } else {
+      const newField: Field = {
+        value: form.username.value,
+        error: "",
+        isValid: true,
+      };
+      newForm = { ...newForm, ...{ username: newField } };
+    }
+
+    // Validator password
+    if (form.password.value.length < 6) {
+      const errorMsg: string =
+        "Votre mot de passe doit faire au moins 6 caractères de long.";
+      const newField: Field = {
+        value: form.password.value,
+        error: errorMsg,
+        isValid: false,
+      };
+      newForm = { ...newForm, ...{ password: newField } };
+    } else {
+      const newField: Field = {
+        value: form.password.value,
+        error: "",
+        isValid: true,
+      };
+      newForm = { ...newForm, ...{ password: newField } };
+    }
+
+    setForm(newForm);
+
+    return newForm.username.isValid && newForm.password.isValid;
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const isFormValid = validateForm();
+    if (isFormValid) {
+      setMessage("👉 Tentative de connexion en cours ...");
+      AuthenticationService.login(
+        form.username.value,
+        form.password.value
+      ).then((isAuthenticated) => {
+        if (!isAuthenticated) {
+          setMessage("🔐 Identifiant ou mot de passe incorrect.");
+          return;
+        }
+
+        history("/carlist");
+      });
+    }
+  };
+
   return (
     <div>
       <section className="h-screen">
@@ -10,7 +105,7 @@ const Login: FunctionComponent = () => {
               <img src="login.jpg" className="w-full" alt="Sample image" />
             </div>
             <div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
-              <form>
+              <form onSubmit={(e) => handleSubmit(e)}>
                 <div className="flex flex-row items-center justify-center lg:justify-start">
                   <p className="text-lg mb-0 mr-4">Sign in with</p>
                   <button
@@ -79,13 +174,27 @@ const Login: FunctionComponent = () => {
                 </div>
 
                 {/* <!-- Email input --> */}
+                {/* Form message */}
+                {message && (
+                  <div className="form-group">
+                    <div className="card-panel grey lighten-5">{message}</div>
+                  </div>
+                )}
                 <div className="mb-6">
                   <input
                     type="text"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-Primary focus:outline-none"
-                    id="exampleFormControlInput2"
+                    id="username"
                     placeholder="Email address"
+                    //value="admin"
+                    onChange={(e) => handleInputChange(e)}
                   />
+                  {/* error */}
+                  {form.username.error && (
+                    <div className="card-panel red accent-1">
+                      {form.username.error}
+                    </div>
+                  )}
                 </div>
 
                 {/* <!-- Password input --> */}
@@ -93,9 +202,17 @@ const Login: FunctionComponent = () => {
                   <input
                     type="password"
                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-Primary focus:outline-none"
-                    id="exampleFormControlInput2"
+                    id="password"
                     placeholder="Password"
+                    //value={form.password.value}
+                    onChange={(e) => handleInputChange(e)}
                   />
+                  {/* error */}
+                  {form.password.error && (
+                    <div className="card-panel red accent-1">
+                      {form.password.error}
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex justify-between items-center mb-6">
@@ -119,8 +236,9 @@ const Login: FunctionComponent = () => {
 
                 <div className="text-center lg:text-left">
                   <button
-                    type="button"
+                    type="submit"
                     className="inline-block px-7 py-3 bg-Primary text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-PrimaryHover hover:shadow-lg focus:bg-PrimaryHover focus:shadow-lg focus:outline-none focus:ring-0 active:bg-PrimaryActive active:text-Primary active:shadow-lg transition duration-150 ease-in-out"
+                    onClick={() => console.log(form.username.value)}
                   >
                     Login
                   </button>

@@ -389,7 +389,7 @@ const CarDetail: FunctionComponent<Params> = () => {
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-4 h-4 mr-2"
               >
                 <path
                   stroke-linecap="round"
