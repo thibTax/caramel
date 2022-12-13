@@ -89,9 +89,8 @@ const CarList: FunctionComponent = () => {
 
       {showModal ? (
         <>
-          <div className=" flex-col justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+          <div className=" flex-col justify-center items-center flex fixed inset-x-0 top-0 h-full z-50 outline-none focus:outline-none bg-gray-600/75 mx-auto py-4">
             <CarForm handleClick={handleClick} />
-            <button className="bg-red-600"></button>
           </div>
         </>
       ) : null}

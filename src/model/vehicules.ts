@@ -1,5 +1,6 @@
 export default class Vehicules {
-    // 1. Typage des propiétés d'un pokémon.
+    [x: string]: any;
+    // 1. Typage des propiétés d'un vehicule.
     id:number;
     vehicule: string;
     marque: string;
@@ -24,7 +25,7 @@ export default class Vehicules {
     Embrayage:string;
     Transmission:string;
      
-    // 2. Définition des valeurs par défaut des propriétés d'un pokémon.
+    // 2. Définition des valeurs par défaut des propriétés d'un vehicule.
     constructor(
      id: number,
      vehicule: string="vehicule type",
@@ -50,7 +51,7 @@ export default class Vehicules {
      Embrayage:string="embrayage",
      Transmission:string="transmission"
     ) {
-     // 3. Initialisation des propiétés d'un pokémons.
+     // 3. Initialisation des propiétés d'un vehicule.
     
     this.id=id;
     this.vehicule=vehicule;

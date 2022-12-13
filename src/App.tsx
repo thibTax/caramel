@@ -10,11 +10,12 @@ import CarList from "./pages/car-list";
 import CarDetails from "./pages/car-details";
 import PrivateRoutes from "./PrivateRoutes";
 import "./App.css";
+import Visitors from "./pages/visitors";
 
 function App() {
   return (
     <div>
-      <NavBar />
+      {/* <NavBar /> */}
 
       <BrowserRouter>
         <Routes>
@@ -23,7 +24,7 @@ function App() {
             <Route path="/carlist" element={<CarList />} />
             <Route path="/carlist/:id" element={<CarDetails id={""} />} />
           </Route>
-
+          <Route path="/visitors" element={<Visitors />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
