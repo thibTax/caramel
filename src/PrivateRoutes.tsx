@@ -4,7 +4,7 @@ import AuthenticationService from "./services/authentification-service";
 
 const PrivateRoute = () => {
   const isAuthenticated = AuthenticationService.isAuthenticated;
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
+  return isAuthenticated ? <Outlet /> : <Navigate to="/visitors" />;
 };
 
 export default PrivateRoute;

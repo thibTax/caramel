@@ -14,8 +14,8 @@ import Visitors from "./pages/visitors";
 
 function App() {
   return (
-    <div>
-      {/* <NavBar /> */}
+    <div className="relative">
+      <NavBar />
 
       <BrowserRouter>
         <Routes>

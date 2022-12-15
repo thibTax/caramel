@@ -1,3 +1,5 @@
+
+
 export default class Imgs {
     // 1. Typage des propiétés d'un vehicule.
     id:number;

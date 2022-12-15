@@ -2,83 +2,52 @@ import react, { FunctionComponent } from "react";
 
 const NavBar: FunctionComponent = () => {
   return (
-    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-Primary">
-      <div className="container flex flex-wrap items-center justify-between mx-auto">
-        <a href="https://flowbite.com/" className="flex items-center">
-          <img
-            src="/login.jpg"
-            className="h-6 mr-3 sm:h-9 rounded-full"
-            alt="Logo"
+    <nav className="bg-Primary/70 h-20 px-2 sm:px-4 py-2.5 fixed w-full z-40 top-0 left-0 flex justify-between">
+      <div className="text-white w-52 text-start self-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          className="w-10 h-10 "
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
           />
-          <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-            Caramel
+        </svg>
+      </div>
+      <h1 className="text-white w-52 text-center self-center text-3xl font-bold">
+        My car
+      </h1>
+      <div className="text-white w-52  text-end self-center flex items-center">
+        <a href="../register">
+          <span>Inscription</span>
+        </a>
+        /{" "}
+        <a href="../login">
+          <span>Connexion</span>
+        </a>
+        <a href="../login">
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              className="w-10 h-10 text-RedText ml-2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+            </svg>
           </span>
         </a>
-        <div className="flex items-center md:order-2">
-          <button
-            type="button"
-            className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-            id="user-menu-button"
-            aria-expanded="false"
-            data-dropdown-toggle="user-dropdown"
-            data-dropdown-placement="bottom"
-          >
-            <span className="sr-only">Open user menu</span>
-            <img
-              className="w-8 h-8 rounded-full"
-              src="/homme-daffaire.png"
-              alt="user photo"
-            />
-          </button>
-          {/* <!-- Dropdown menu --> */}
-          <div
-            className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
-            id="user-dropdown"
-          >
-            <div className="px-4 py-3">
-              <span className="block text-sm text-gray-900 dark:text-white">
-                Bonnie Green
-              </span>
-              <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">
-                name@flowbite.com
-              </span>
-            </div>
-            <ul className="py-1" aria-labelledby="user-menu-button">
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >
-                  Dashboard
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >
-                  Settings
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >
-                  Earnings
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >
-                  Sign out
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
       </div>
     </nav>
   );

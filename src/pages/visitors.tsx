@@ -16,7 +16,7 @@ const Visitors: FunctionComponent = () => {
   function prev() {
     count === 0 ? setCount(Imgs.length - 1) : setCount(count - 1);
   }
-  console.log(Imgs[count].src);
+  console.log(count);
   return (
     <div>
       <div className="text-RedText group ">
@@ -28,7 +28,7 @@ const Visitors: FunctionComponent = () => {
         >
           {/* <!-- Carousel wrapper --> */}
           <div className="relative min-h-screen overflow-hidden rounded-lg ">
-            {Imgs[count].id === count ? (
+            {Imgs[count]?.id === count ? (
               <div
                 className="duration-700 ease-in-out"
                 data-carousel-item="active"
